@@ -15,13 +15,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({origin: 'http://127.0.0.1:5173'})); 
 
 // MongoDB database
-mongoose
-  .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('Failed to connect to MongoDB:', err));
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true, });
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
 // Route Middleware
 app.use('/', routes);
 
+//Connect to the database before listening
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+connectDB().then(() => app.listen(port, () => console.log("listening for requests")));
