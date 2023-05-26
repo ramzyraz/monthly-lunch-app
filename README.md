@@ -2,6 +2,9 @@
  
  This is the server of the Monthly Lunch Planner app which is used to keep a record of the monthly lunches that are attended with friends. 
  
+ You can find the frontend side of this application in the following repo:
+[Monthly Lunch App Frontend](https://github.com/ramzyraz/monthly-lunch-app-frontend/)
+ 
  ## Technologies Used
  This project uses the following technologies:
   1. <b>Express</b> and <b>Mongoose</b> for the Backend
