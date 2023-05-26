@@ -37,11 +37,7 @@ module.exports.createPoll = async (req, res) => {
 module.exports.getPolls = async (req, res) => {
   try {
     const polls = await Poll.find();
-    if (polls.length === 0) {
-      res.status(404).json({ message: 'No polls found' });
-    } else {
-      res.status(200).json(polls);
-    }
+    res.status(200).json(polls);
   } catch (error) {
     console.error('Error fetching polls:', error);
     res.status(500).json({ error: 'Failed to fetch polls' });
