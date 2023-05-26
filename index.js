@@ -12,7 +12,7 @@ const routes = require('./routes/index');
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({origin: 'https://monthly-lunch-app.vercel.app/'})); 
+app.use(cors({origin: 'https://monthly-lunch-app.netlify.app'})); 
 
 // MongoDB database
 const connectDB = async () => {
